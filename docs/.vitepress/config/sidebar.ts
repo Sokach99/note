@@ -24,14 +24,13 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
  * @returns {DefaultTheme.SidebarItem[]}
  */
 function getItemsByDate(path: string) {
-  const docDir = `docs/${metaData.srcDir}`
   // 侧边栏年份分组数组
   const yearGroups: DefaultTheme.SidebarItem[] = []
   // 置顶数组
   const topArticleItems: DefaultTheme.SidebarItem[] = []
 
   // 1.获取所有年份目录
-  sync(`${docDir}/${path}/*`, {
+  sync(`docs/${path}/*`, {
     onlyDirectories: true,
     objectMode: true,
   }).forEach(({ name }) => {
@@ -40,20 +39,20 @@ function getItemsByDate(path: string) {
     const articleItems: DefaultTheme.SidebarItem[] = []
 
     // 2.获取所有月份目录
-    sync(`${docDir}/${path}/${year}/*`, {
+    sync(`docs/${path}/${year}/*`, {
       onlyDirectories: true,
       objectMode: true,
     }).forEach(({ name }) => {
       const month = name
 
       // 3.获取所有日期目录
-      sync(`${docDir}/${path}/${year}/${month}/*`, {
+      sync(`docs/${path}/${year}/${month}/*`, {
         onlyDirectories: true,
         objectMode: true,
       }).forEach(({ name }) => {
         const day = name
         // 4.获取日期目录下的所有文章
-        sync(`${docDir}/${path}/${year}/${month}/${day}/*`, {
+        sync(`docs/${path}/${year}/${month}/${day}/*`, {
           onlyFiles: true,
           objectMode: true,
         }).forEach((article) => {
@@ -115,7 +114,6 @@ function getItemsByDate(path: string) {
  * @returns {DefaultTheme.SidebarItem[]}
  */
 function getItems(path: string) {
-  const docDir = `docs/${metaData.srcDir}`
   // 侧边栏分组数组
   const groups: DefaultTheme.SidebarItem[] = []
   // 侧边栏分组下标题数组
@@ -126,13 +124,13 @@ function getItems(path: string) {
   const titleCollapsedSize = 20
 
   // 1.获取所有分组目录
-  sync(`${docDir}/${path}/*`, {
+  sync(`docs/${path}/*`, {
     onlyDirectories: true,
     objectMode: true,
   }).forEach(({ name }) => {
     const groupName = name
     // 2.获取分组下的所有文章
-    sync(`${docDir}/${path}/${groupName}/*`, {
+    sync(`docs/${path}/${groupName}/*`, {
       onlyFiles: true,
       objectMode: true,
     }).forEach((article) => {
