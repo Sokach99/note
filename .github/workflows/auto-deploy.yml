@@ -37,7 +37,7 @@ jobs:
           username: "web"
           server: "119.29.37.16"
           port: "22"
-          ssh_private_key: ${{ secrets.SSH_KEY}}
+          ssh_private_key: ${{ secrets.WEB_KEY}}
           # 要上传文件所在目录
           local_path: "./docs/.vitepress/dist/*"
           # 远程服务器目标路径
