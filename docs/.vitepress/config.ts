@@ -12,6 +12,7 @@ export default defineConfig({
 
   head,
 
+  srcDir: metaData.srcDir,
   cleanUrls: true, // 清理url
   lastUpdated: true,
   markdown,
