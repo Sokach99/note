@@ -32,18 +32,19 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
-      # - uses: pnpm/action-setup@v3 # 如果使用 pnpm，请取消注释
+      - uses: pnpm/action-setup@v3 # 如果使用 pnpm，请取消注释
       # - uses: oven-sh/setup-bun@v1 # 如果使用 Bun，请取消注释
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: pnpm
         # 安装依赖
       - name: 安装依赖
-        run: npm install
+        run: pnpm install
       # 打包
       - name: 打包
-        run: npm run docs:build
+        run: pnpm run docs:build
       # 上传打包文件到远程服务器
       - name: 上传文件到远程服务器
         uses: zhenyuWang/Upload-File-Action@v1.0.1
