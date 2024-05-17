@@ -41,10 +41,10 @@ jobs:
           cache: npm # 或 pnpm / yarn
         # 安装依赖
       - name: 安装依赖
-        run: npm install
+        run: pnpm install
       # 打包
       - name: 打包
-        run: npm run docs:build
+        run: pnpm run docs:build
       # 上传打包文件到远程服务器
       - name: 上传文件到远程服务器
         uses: zhenyuWang/Upload-File-Action@v1.0.1
