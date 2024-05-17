@@ -38,15 +38,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm # 或 pnpm / yarn
+          cache: npm # 或 pnpm / yarn
         # 安装依赖
       - name: 安装依赖
-        run: |
-          npm install -g pnpm
-          pnpm install
+        run: npm install
       # 打包
       - name: 打包
-        run: pnpm run docs:build
+        run: npm run docs:build
       # 上传打包文件到远程服务器
       - name: 上传文件到远程服务器
         uses: zhenyuWang/Upload-File-Action@v1.0.1
