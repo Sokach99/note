@@ -28,6 +28,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: 迁出代码
+        # 使用action库  actions/checkout获取源码
+        uses: actions/checkout@master
       - name: 上传文件到远程服务器
         uses: zhenyuWang/Upload-File-Action@v1.0.1
         with:
